@@ -1,13 +1,14 @@
 import sys
 import getopt
-from bpmnparser import produce_solidity_from_bpmn
+from bpmn_parser import produce_solidity_from_bpmn
 
 
 def main():
     bpmnfile = ''
     outdir = ''
+    mult_chain_mode = False
     try:
-        opts, args = getopt.getopt(sys.argv[1:], "hi:o:", ["ibpmn=", "odir=","i=", "o="])
+        opts, args = getopt.getopt(sys.argv[1:], "hi:o:", ["ibpmn=", "odir=","i=", "o=", "mult_chain_mode="])
     except getopt.GetoptError:
         print
         'main.py -i <bpmnfile> -o <outdir>'
@@ -21,7 +22,10 @@ def main():
             bpmnfile = arg
         elif opt in ("-o", "--odir"):
             outdir = arg
-    produce_solidity_from_bpmn(bpmnfile, outdir)
+        elif opt in ("--mult_chain_mode"):
+            if arg.lower() == "true":
+                mult_chain_mode = True
+    produce_solidity_from_bpmn(bpmnfile, outdir, mult_chain_mode)
 
 
 if __name__ == "__main__":
