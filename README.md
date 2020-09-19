@@ -12,5 +12,5 @@ This is a proof of concept. Only a subset of BPMN can be currently handled. Curr
 # Usage
 
 1. Compile python project.
-2. Run with parameters: -i <path to input .bpmn file> -o <path to output directory> --mult_chain_mode <true or false>
+2. Run with parameters: ```-i <path to input .bpmn file> -o <path to output directory> --mult_chain_mode <true or false>```
   
